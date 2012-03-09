@@ -60,7 +60,7 @@ function comment_post( $comment_id ) {
 
 	if ( ! is_current_comment_valid() ) {
 		delete_comment( $comment_id );
-		return;
+		wp_die( __( 'Sorry, we think you are not a human :/', 'inps-antispam' ) );
 	}
 }
 
