@@ -33,7 +33,7 @@ function enhance_comment_form( $form ) {
 	// split answer
 	$parts = array();
 	$answer_len = strlen( $answer );
-	$answer_splitpoint = rand( 1, $answer_len-1 );
+	$answer_splitpoint = rand( 1, $answer_len - 1 );
 	$parts[0] = substr( $answer, 0, $answer_splitpoint );
 	$parts[1] = substr( $answer, $answer_splitpoint );
 
@@ -48,8 +48,8 @@ function enhance_comment_form( $form ) {
 	<div class="hide-if-js-enabled">
 		<label for="inpsyde_antispam_answer"><?php echo $advice; ?></label>
 		<input type="text" name="inpsyde_antispam_answer" id="inpsyde_antispam_answer">
-		<input type="hidden" name="expected_answer[0]" id="expected_answer_0" value="<?php echo $parts[0]; ?>">
-		<input type="hidden" name="expected_answer[1]" id="expected_answer_1" value="<?php echo $parts[1]; ?>">
+		<input type="hidden" name="expected_answer[0]" id="expected_answer_0" value="<?php echo $parts[ 0 ]; ?>">
+		<input type="hidden" name="expected_answer[1]" id="expected_answer_1" value="<?php echo $parts[ 1 ]; ?>">
 		<script type="text/javascript">
 		jQuery(function($) {
 			var answer = $("#expected_answer_0").val() + $("#expected_answer_1").val();
