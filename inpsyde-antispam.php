@@ -18,6 +18,13 @@ function init() {
 }
 
 add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
+
+/**
+ * Hook: Add spam detection fields to comment form.
+ * 
+ * @param  mixed $form The comment form
+ * @return void
+ */
 function enhance_comment_form( $form ) {
 	
 	// generate/get expected answer
@@ -55,6 +62,13 @@ function enhance_comment_form( $form ) {
 }
 
 add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
+
+/**
+ * Hook: Process a posted comment.
+ * 
+ * @param  int $comment_id
+ * @return void
+ */
 function comment_post( $comment_id ) {
 	global $comment_content, $comment_type;
 
@@ -64,6 +78,11 @@ function comment_post( $comment_id ) {
 	}
 }
 
+/**
+ * Check if the submitted comment is valid.
+ * 
+ * @return boolean
+ */
 function is_current_comment_valid() {
 
 	if ( ! isset( $_POST[ 'inpsyde_antispam_answer' ] ) || ! isset( $_POST[ 'expected_answer' ] ) )
@@ -79,6 +98,12 @@ function is_current_comment_valid() {
 	return $answer === $expected;
 }
 
+/**
+ * Delete comment by comment id.
+ * 
+ * @param  int $comment_id
+ * @return void
+ */
 function delete_comment( $comment_id ) {
 	global $wpdb;
 
@@ -88,13 +113,18 @@ function delete_comment( $comment_id ) {
 		WHERE
 			comment_ID = {$comment_id}
 	" );
-	recount_comments();
+
+	recount_comments_for_post( (int) $_POST[ 'comment_post_ID' ] );
 }
 
-function recount_comments() {
+/**
+ * Recount comment number for given post id.
+ * 
+ * @param  int $post_id
+ * @return void
+ */
+function recount_comments_for_post( $post_id ) {
 	global $wpdb;
-
-	$post_id = (int) $_POST[ 'comment_post_ID' ];
 
 	$wpdb->query( "
 		UPDATE
