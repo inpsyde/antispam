@@ -25,6 +25,37 @@ function init() {
 add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
 
 /**
+ * Get array of possible words.
+ * 
+ * @return array
+ */
+function get_possible_words() {
+
+	$words_string = trim( get_option( 'inpsas_words', '' ) );
+	$raw_words    = explode( "\n", $words_string );
+
+	// filter empty strings
+	return array_filter( $raw_words, function ( $w ) { return strlen( trim( $w ) ) > 0; } );
+}
+
+/**
+ * Randomly select a word from our dictionary.
+ * 
+ * If no words exist, use a fallback string.
+ * 
+ * @return string
+ */
+function get_random_word() {
+
+	$words = get_possible_words();
+
+	if ( 0 === count( $words ) )
+		return "I, for one, welcome our new overlords.";
+	else
+		return $words[ array_rand( $words ) ];
+}
+
+/**
  * Hook: Add spam detection fields to comment form.
  * 
  * @param  mixed $form The comment form
@@ -33,12 +64,12 @@ add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
 function enhance_comment_form( $form ) {
 	
 	// generate/get expected answer
-	$answer = "Spamschutz";
+	$answer = get_random_word();
 
 	// split answer
 	$parts = array();
 	$answer_len = strlen( $answer );
-	$answer_splitpoint = rand( 1, $answer_len - 1 );
+	$answer_splitpoint = rand( 1, $answer_len - 2 ); // -2 => part 1 cannot be empty
 	$parts[0] = substr( $answer, 0, $answer_splitpoint );
 	$parts[1] = substr( $answer, $answer_splitpoint );
 
