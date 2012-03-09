@@ -12,6 +12,7 @@ namespace Inpsyde\Antispam;
 
 if ( is_admin() ) {
 	require_once 'settings.php';
+	new Settings\Page;
 }
 
 add_action( 'wp', '\Inpsyde\Antispam\init' );
