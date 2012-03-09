@@ -58,10 +58,25 @@ add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
 function comment_post( $comment_id ) {
 	global $comment_content, $comment_type;
 
-	if ( ! isset( $_POST[ 'inpsyde_antispam_answer' ] ) || ! isset( $_POST[ 'expected_answer' ] ) ) {
+	if ( ! is_current_comment_valid() ) {
 		delete_comment( $comment_id );
 		return;
 	}
+}
+
+function is_current_comment_valid() {
+
+	if ( ! isset( $_POST[ 'inpsyde_antispam_answer' ] ) || ! isset( $_POST[ 'expected_answer' ] ) )
+		return false;
+
+	if ( ! is_array( $_POST[ 'expected_answer' ] ) )
+		return false;
+
+	// TODO: check if the answer is in the list of allowed words
+	$answer   = $_POST[ 'inpsyde_antispam_answer' ];
+	$expected = implode( '', $_POST[ 'expected_answer' ] );
+
+	return $answer === $expected;
 }
 
 function delete_comment( $comment_id ) {
