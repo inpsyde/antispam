@@ -15,8 +15,11 @@ if ( is_admin() ) {
 	new Settings\Page;
 }
 
-add_action( 'wp', '\Inpsyde\Antispam\init' );
+add_action( 'init', '\Inpsyde\Antispam\init' );
 function init() {
+	
+	load_plugin_textdomain( 'inps-antispam', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
 	if ( ! is_admin() ) {
 		wp_enqueue_script( 'jquery' );
 	}
