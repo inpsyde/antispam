@@ -10,6 +10,10 @@ Version: 1.0
 
 namespace Inpsyde\Antispam;
 
+if ( is_admin() ) {
+	require_once 'settings.php';
+}
+
 add_action( 'wp', '\Inpsyde\Antispam\init' );
 function init() {
 	if ( ! is_admin() ) {
