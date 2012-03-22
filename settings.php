@@ -51,7 +51,7 @@ class Page {
 			/* $id       */ 'inpsas_advice',
 			/* $title    */ sprintf(
 				'<label for="inpsas_advice">%s</label>',
-				__( 'Warning, assign the password hint %word% to see it displayed when prompted.', 'inps-antispam' )
+				__( 'Please note; assign the password hint %word% to see it displayed when prompted.', 'inps-antispam' )
 			),
 			/* $callback */ function () {
 				?>

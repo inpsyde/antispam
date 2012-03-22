@@ -19,34 +19,75 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: inpsyde-antispam.php:80
-#, php-format
-#@ inps-antispam
-msgid "Please type the following phrase to confirm you are a human: \"%s%s%s\""
-msgstr "Bitte gib den folgenden Text ein, um zu zeigen, dass du ein Mesch bist: \"%s%s%s\""
-
-#: inpsyde-antispam.php:116
+#: inpsyde-antispam.php:127
 #@ inps-antispam
 msgid "Sorry, we think you are not a human :/"
 msgstr "Sorry, ich glaube du bist kein Mensch :/"
 
-#: settings.php:28
+#: settings.php:30
 #@ inps-antispam
 msgid "Antispam Settings"
 msgstr "Antispam Einstellungen"
 
-#: settings.php:37
+#: settings.php:39
 #@ inps-antispam
 msgid "Selection of words users without JavaScript have to type. Separate with line breaks."
 msgstr "Auswahl von Worten, die Nutzer ohne JavaScript eintippen müssen. Trenne mit Zeilenumbrüchen."
 
-#: settings.php:55
+#: settings.php:89
 #@ inps-antispam
 msgid "Antispam"
 msgstr "Antispam"
 
-#: settings.php:62
+#: settings.php:95
 #@ default
 msgid "Save Changes"
 msgstr ""
+
+#. translators: plugin header field 'Name'
+#: inpsyde-antispam.php:0
+#@ inps-antispam
+msgid "Inpsyde Antispam"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: inpsyde-antispam.php:0
+#@ inps-antispam
+msgid "Simple Antispam honeypot solution."
+msgstr "Einfache aber effektive Antispam Lösung."
+
+#. translators: plugin header field 'Author'
+#: inpsyde-antispam.php:0
+#@ inps-antispam
+msgid "Inpsyde GmbH"
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: inpsyde-antispam.php:0
+#@ inps-antispam
+msgid "http://inpsyde.com"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: inpsyde-antispam.php:0
+#@ inps-antispam
+msgid "1.0.0"
+msgstr ""
+
+#: inpsyde-antispam.php:84
+#, php-format
+#@ inps-antispam
+msgid "Please type the following phrase to confirm you are a human: %word%"
+msgstr "Bitte ergänze das folgende Wort und identifiziere dich damit als Mensch: %word%"
+
+#: settings.php:69
+#@ inps-antispam
+msgid "The warning you wish to give when the field is not or wrong filled out."
+msgstr "Die Warnung, die erscheint, wenn ein falsches oder kein Wert hinterlegt wird."
+
+#: settings.php:54
+#, php-format
+#@ inps-antispam
+msgid "Please note; assign the password hint %word% to see it displayed when prompted."
+msgstr "Hinterlege einen Text als Hinweis für den Nutzer, der ohne aktives JavaScript kommt.  Vergebe den Schlüssel %word% für das Antwort-Wort und es wird an dieser Stelle deiner Antwort erscheinen."
 
