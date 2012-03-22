@@ -1,9 +1,9 @@
 === Inpsyde AntiSpam ===
-Contributors: eteubert
+Contributors: eteubert, bueltge
 Donate link: 
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
-Tested up to: 3.3.1
+Tested up to: 3.4-alpha
 
 Simple antispam solution. Scrambles a word and pieces it together automatically via JavaScript. Users with JavaScript enabled won't notice anything. Those who have JavaScript disabled have to type the word into a textfield. This plugin won't help against a targeted spam attack but should prevent a lot of random spam.
 
@@ -20,5 +20,5 @@ No remote service needed. Does not send or retrieve data from third party servic
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * Release
