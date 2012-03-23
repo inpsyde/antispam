@@ -1,3 +1,5 @@
+
+
 <?php 
 /**
  * Plugin Name: Inpsyde Antispam
@@ -17,6 +19,10 @@ if ( is_admin() ) {
 	require_once 'settings.php';
 	new Settings\Page;
 }
+
+register_uninstall_hook( __FILE__, function () {
+	delete_option( 'inpsyde_antispam' );
+} );
 
 add_action( 'init', '\Inpsyde\Antispam\init' );
 function init() {
@@ -126,7 +132,7 @@ function comment_post( $comment_id ) {
 
 		if ( empty( $rejected_string ) )
 			$rejected_string = __( 'Sorry, we think you are not a human :/', 'inps-antispam' );
-		
+
 		wp_die( $rejected_string );
 	}
 }
