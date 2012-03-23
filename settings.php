@@ -1,6 +1,22 @@
 <?php
 namespace Inpsyde\Antispam\Settings;
 
+/**
+ * Convenience wrapper to access plugin options.
+ * 
+ * @param  string $name    option name
+ * @param  mixed  $default fallback value if option does not exist
+ * @return mixed
+ */
+function get_option( $name, $default = NULL ) {
+	$options = \get_option( 'inpsyde_antispam' );
+
+	return ( isset( $options[ $name ] ) ) ? $options[ $name ] : $default;
+}
+
+/**
+ * Settings Page Class
+ */
 class Page {
 	
 	private $page_hook;
@@ -40,7 +56,7 @@ class Page {
 			),
 			/* $callback */ function () {
 				?>
-				<textarea name="inpsas_words" id="inpsas_words" rows="10" cols="50"><?php echo get_option( 'inpsas_words', '' ); ?></textarea>
+				<textarea name="inpsyde_antispam[words]" id="inpsas_words" rows="10" cols="50"><?php echo get_option( 'words', '' ); ?></textarea>
 				<?php
 			},
 			/* $page     */ $this->page_hook,  
@@ -55,7 +71,7 @@ class Page {
 			),
 			/* $callback */ function () {
 				?>
-				<textarea name="inpsas_advice" id="inpsas_advice" class="large-text" rows="10" cols="50"><?php echo get_option( 'inpsas_advice', '' ); ?></textarea>
+				<textarea name="inpsyde_antispam[advice]" id="inpsas_advice" class="large-text" rows="10" cols="50"><?php echo get_option( 'advice', '' ); ?></textarea>
 				<?php
 			},
 			/* $page     */ $this->page_hook,  
@@ -70,16 +86,14 @@ class Page {
 			),
 			/* $callback */ function () {
 				?>
-				<textarea name="inpsas_rejected" id="inpsas_rejected" class="large-text" rows="10" cols="50"><?php echo get_option( 'inpsas_rejected', '' ); ?></textarea>
+				<textarea name="inpsyde_antispam[rejected]" id="inpsas_rejected" class="large-text" rows="10" cols="50"><?php echo get_option( 'rejected', '' ); ?></textarea>
 				<?php
 			},
 			/* $page     */ $this->page_hook,  
 			/* $section  */ 'antispam_settings_section'
 		);
 		
-		register_setting( $this->page_hook, 'inpsas_words' );
-		register_setting( $this->page_hook, 'inpsas_advice' );
-		register_setting( $this->page_hook, 'inpsas_rejected' );
+		register_setting( $this->page_hook, 'inpsyde_antispam' );
 	}
 	
 	public function page() {

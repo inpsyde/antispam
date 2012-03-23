@@ -37,7 +37,7 @@ add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
  */
 function get_possible_words() {
 	
-	$words_string = trim( get_option( 'inpsas_words', '' ) );
+	$words_string = trim( Settings\get_option( 'words', '' ) );
 	$raw_words    = explode( "\r\n", $words_string );
 	
 	// filter empty strings
@@ -79,7 +79,7 @@ function enhance_comment_form( $form ) {
 	$parts[0] = substr( $answer, 0, $answer_splitpoint );
 	$parts[1] = substr( $answer, $answer_splitpoint );
 	// custom strings from settings
-	$advice_string = get_option( 'inpsas_advice', '' );
+	$advice_string = Settings\get_option( 'advice', '' );
 	if ( empty( $advice_string ) )
 		$advice_string = __( 'Please type the following phrase to confirm you are a human: %word%', 'inps-antispam' );
 	// replace words in string
@@ -122,9 +122,11 @@ function comment_post( $comment_id ) {
 
 	if ( ! is_current_comment_valid() ) {
 		delete_comment( $comment_id );
-		$rejected_string = get_option( 'inpsas_rejected', '' );
+		$rejected_string = Settings\get_option( 'rejected', '' );
+
 		if ( empty( $rejected_string ) )
 			$rejected_string = __( 'Sorry, we think you are not a human :/', 'inps-antispam' );
+		
 		wp_die( $rejected_string );
 	}
 }
