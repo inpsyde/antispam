@@ -1,5 +1,3 @@
-
-
 <?php 
 /**
  * Plugin Name: Inpsyde Antispam
@@ -8,7 +6,7 @@
  * Author:      Inpsyde GmbH
  * Author URI:  http://inpsyde.com
  * License:     GPLv3
- * Version:     1.0.0
+ * Version:     2.0.0
  * Text Domain: inps-antispam
  * Domain Path: /languages
  */
@@ -17,10 +15,12 @@ namespace Inpsyde\Antispam;
 
 if ( is_admin() ) {
 	require_once 'settings.php';
-	new Settings\Page;
+	new Settings\Inpsyde_Settings_Page;
 }
 
+// uninstall options item, if the plugin deinstall via backend
 register_uninstall_hook( __FILE__, function () {
+	
 	delete_option( 'inpsyde_antispam' );
 } );
 

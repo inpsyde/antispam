@@ -9,6 +9,7 @@ namespace Inpsyde\Antispam\Settings;
  * @return mixed
  */
 function get_option( $name, $default = NULL ) {
+	
 	$options = \get_option( 'inpsyde_antispam' );
 
 	return ( isset( $options[ $name ] ) ) ? $options[ $name ] : $default;
@@ -16,8 +17,11 @@ function get_option( $name, $default = NULL ) {
 
 /**
  * Settings Page Class
+ * 
+ * @authors et, fb
+ * @since   2.0.0  03/26/2012
  */
-class Page {
+class Inpsyde_Settings_Page {
 	
 	private $page_hook;
 	
@@ -96,6 +100,13 @@ class Page {
 		register_setting( $this->page_hook, 'inpsyde_antispam' );
 	}
 	
+	/**
+	 * Get settings pages incl. markup
+	 * 
+	 * @authors et, fb
+	 * @since   2.0.0  03/26/2012
+	 * @return  void
+	 */
 	public function page() {
 		?>
 		<div class="wrap">
