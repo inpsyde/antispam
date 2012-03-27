@@ -18,20 +18,28 @@ if ( is_admin() ) {
 	new Settings\Inpsyde_Settings_Page;
 }
 
-// uninstall options item, if the plugin deinstall via backend
-register_uninstall_hook( __FILE__, function () {
+/**
+ * uninstall options item, if the plugin deinstall via backend
+ * 
+ * @authors et, fb
+ * @since   2.0.0  03/26/2012
+ * @uses    delete_option
+ * @return  void
+ */
+register_uninstall_hook( __FILE__, '\Inpsyde\Antispam\delete_options' );
+function delete_options() {
 	
 	delete_option( 'inpsyde_antispam' );
-} );
+}
 
 add_action( 'init', '\Inpsyde\Antispam\init' );
 function init() {
 	
-	load_plugin_textdomain( 'inps-antispam', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	load_plugin_textdomain( 'inps-antispam', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-	if ( ! is_admin() ) {
+	if ( ! is_admin() )
 		wp_enqueue_script( 'jquery' );
-	}
+	
 }
 
 add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
