@@ -1,5 +1,5 @@
 === Inpsyde AntiSpam ===
-Contributors: eteubert, bueltge
+Contributors: eteubert, Bueltge
 Donate link: 
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
