@@ -21,4 +21,4 @@ if ( ! $correct_php_version ) {
 	exit;
 }
 
-require_once( 'inpsyde-antispam.php' );
+require_once( 'antispam.php' );
