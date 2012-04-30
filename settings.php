@@ -1,22 +1,37 @@
 <?php
+// set namespace
 namespace Inpsyde\Antispam\Settings;
 
 /**
  * Settings Page Class
  * 
- * @authors et, fb
+ * @author et, fb
  * @since   2.0.0  03/26/2012
  */
 class Inpsyde_Settings_Page {
 	
 	private $page_hook;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @author   et, fb
+	 * @since    2.0.0  03/26/2012
+	 * @return   void
+	 */
 	public function __construct() {
 		
 		add_action( 'admin_menu', array( $this, 'init_menu' ) );
 		add_action( 'admin_init', array( $this, 'init_settings' ) );
 	}
 	
+	/** 
+	 * Init menu item
+	 * 
+	 * @author   et, fb
+	 * @since    2.0.0  03/26/2012
+	 * @return   void
+	 */
 	public function init_menu() {
 		
 		$this->page_hook = add_submenu_page(
@@ -29,6 +44,13 @@ class Inpsyde_Settings_Page {
 		);
 	}
 	
+	/**
+	 * Register and add settings fields to form on settings page
+	 * 
+	 * @author   et, fb
+	 * @since    2.0.0  03/26/2012
+	 * @return   void
+	 */
 	public function init_settings() {
 		
 		add_settings_section(
@@ -89,7 +111,7 @@ class Inpsyde_Settings_Page {
 	/**
 	 * Get settings pages incl. markup
 	 * 
-	 * @authors et, fb
+	 * @author  et, fb
 	 * @since   2.0.0  03/26/2012
 	 * @return  void
 	 */
@@ -110,4 +132,4 @@ class Inpsyde_Settings_Page {
 		<?php
 	}
 	
-}
+} // end class

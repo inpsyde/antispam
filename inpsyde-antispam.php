@@ -1,7 +1,7 @@
 <?php 
 /**
  * Plugin Name: Inpsyde Antispam
- * Plugin URI:  
+ * Plugin URI:  http://wordpress.org/extend/plugins/js-antispam/
  * Description: Simple Antispam honeypot solution.
  * Author:      Inpsyde GmbH
  * Author URI:  http://inpsyde.com
@@ -12,7 +12,7 @@
  * Domain Path: /languages
  */
 
-
+// check for right php version
 $correct_php_version = version_compare( phpversion(), '5.3.0', '>=' );
 
 if ( ! $correct_php_version ) {
