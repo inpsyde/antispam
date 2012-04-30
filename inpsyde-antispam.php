@@ -21,4 +21,6 @@ if ( ! $correct_php_version ) {
 	exit;
 }
 
+static $inps_antispam_file = __FILE__;
+
 require_once( 'antispam.php' );

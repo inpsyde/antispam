@@ -15,12 +15,27 @@ if ( is_admin() ) {
  * @uses    delete_option
  * @return  void
  */
-register_uninstall_hook( __FILE__, '\Inpsyde\Antispam\delete_options' );
+register_uninstall_hook( $inps_antispam_file, '\Inpsyde\Antispam\delete_options' );
 function delete_options() {
 	
 	delete_option( 'inpsyde_antispam' );
 }
 
+/**
+ * Check for db entry from older versions and delete
+ * 
+ * @author  fb
+ * @since   2.0.0  04/30/2012
+ * @uses    delete_option
+ * @return  void
+ */
+register_activation_hook( $inps_antispam_file, '\Inpsyde\Antispam\delete_old_stuff' );
+function delete_old_stuff() {
+	
+	// only for older versions of the plugin to remove the old db-entry
+	if ( \get_option( 'fbjsas_settings' ) )
+		delete_option( 'fbjsas_settings' );
+}
 
 /**
  * Init the plugin in WordPress
