@@ -8,13 +8,6 @@ if ( is_admin() ) {
 	new Settings\Inpsyde_Settings_Page;
 }
 
-// only on frontend, single pages
-// include the new fields in comment form on frontend
-if ( is_singular() ) {
-	add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
-	add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
-}
-
 /**
  * uninstall options item, if the plugin deinstall via backend
  * 
@@ -41,10 +34,14 @@ add_action( 'init', '\Inpsyde\Antispam\init' );
 function init() {
 	
 	load_plugin_textdomain( 'inps-antispam', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-	if ( ! is_admin() )
-		wp_enqueue_script( 'jquery' );
 	
+	// only on frontend, single pages
+	// include the new fields in comment form on frontend
+	if ( is_singular() ) {
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
+		add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
+	}
 }
 
 /**
@@ -90,6 +87,26 @@ function get_random_word() {
 		return 'I, for one, welcome our new overlords.';
 	else
 		return $words[ array_rand( $words ) ];
+}
+
+/**
+ * Enqueue the custom script create value and hide fields, if JS active
+ * 
+ * @author  fb
+ * @since   2.1.0  05/02/2012
+ * @return  void
+ */
+function enqueue_scripts() {
+	
+	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+	
+	wp_enqueue_script(
+		'inps-antispam-script',
+		plugins_url( '/js/script' . $suffix. '.js', __FILE__ ),
+		array( 'jquery' ),
+		'',
+		TRUE
+	);
 }
 
 /**
