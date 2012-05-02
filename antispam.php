@@ -105,15 +105,18 @@ function enqueue_scripts() {
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 	
 	// check for options to use with an js lib
-	if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) )
+	if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) {
 		$script = 'jquery-script';
-	else
+		$lib = 'array( \'jquery\' ) ';
+	} else {
 		$script = 'script';
-	
+		$lib = '';
+	}
+	var_dump($lib.$script);
 	wp_enqueue_script(
-		'inps-antispam-jquery-script',
+		'inps-antispam-script',
 		plugins_url( '/js/' . $script . $suffix. '.js', __FILE__ ),
-		array( 'jquery' ),
+		$lib,
 		'',
 		TRUE
 	);

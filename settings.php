@@ -62,11 +62,11 @@ class Inpsyde_Settings_Page {
 		
 		add_settings_field(
 			/* $id       */ 'inpsas_jslib',
-			/* $title    */ __( 'Do you will use the solution with jQuery lib or without an lib?', 'inps-antispam' ),
+			/* $title    */ __( 'Javascript Library', 'inps-antispam' ),
 			/* $callback */ function () {
 				?>
 				<fieldset>
-					<legend class="screen-reader-text"><span>Javascript Library</span></legend>
+					<legend class="screen-reader-text"><span>__( 'Javascript Library', 'inps-antispam' )</span></legend>
 					<label>
 						<input type="radio" name="inpsyde_antispam[jslib]" value="none" <?php
 						if ( 'none' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) { // checked() uses "==" rather than "==="
@@ -82,6 +82,11 @@ class Inpsyde_Settings_Page {
 						<span><?php _e( 'jQuery', 'inps-antispam' ); ?></span>
 					</label>
 				</fieldset>
+				<span class="description">
+				<?php
+				_e( 'Do you will use the solution with jQuery lib or without an lib? Decide which library you want to use the frontend.', 'inps-antispam' );
+				?>
+				</span>
 				<?php
 			},
 			/* $page     */ $this->page_hook,  

@@ -4,7 +4,7 @@ Donate link:
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
 Tested up to: 3.4-Beta3
-Stable tag: 2.0.1
+Stable tag: 2.1.0
 
 Simple antispam solution with the magic of javascript
 
@@ -31,6 +31,11 @@ Please give us feedback, contribute and file technical bugs on [GitHub Repo](htt
 1. Ready
 
 == Changelog ==
+= 2.1.0 =
+* Add options for use with/without jquery lib
+* Optimize loading and enqueue of scripts
+* Add solution in JS with/without jquery lib
+
 = 2.0.1 =
 * Bugfix for use comment check only on frontend
 
