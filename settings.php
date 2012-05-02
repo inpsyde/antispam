@@ -69,14 +69,14 @@ class Inpsyde_Settings_Page {
 					<legend class="screen-reader-text"><span>Javascript Library</span></legend>
 					<label>
 						<input type="radio" name="inpsyde_antispam[jslib]" value="none" <?php
-						if ( \Inpsyde\Antispam\get_option( 'jslib', '' ) === 'none' ) { // checked() uses "==" rather than "==="
+						if ( 'none' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) { // checked() uses "==" rather than "==="
 							echo " checked='checked'";
 						} ?> /> 
 						<span><?php _e( 'none', 'inps-antispam' ); ?></span>
 					</label><br />
 					<label>
 						<input type="radio" name="inpsyde_antispam[jslib]" value="jquery" <?php
-						if ( \Inpsyde\Antispam\get_option( 'jslib', '' ) === 'jquery' ) { // checked() uses "==" rather than "==="
+						if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) { // checked() uses "==" rather than "==="
 							echo " checked='checked'";
 						} ?> /> 
 						<span><?php _e( 'jQuery', 'inps-antispam' ); ?></span>

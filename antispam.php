@@ -104,9 +104,15 @@ function enqueue_scripts() {
 	
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 	
+	// check for options to use with an js lib
+	if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) )
+		$script = 'jquery-script';
+	else
+		$script = 'script';
+	
 	wp_enqueue_script(
 		'inps-antispam-jquery-script',
-		plugins_url( '/js/script' . $suffix. '.js', __FILE__ ),
+		plugins_url( '/js/' . $script . $suffix. '.js', __FILE__ ),
 		array( 'jquery' ),
 		'',
 		TRUE
