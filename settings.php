@@ -1,36 +1,37 @@
 <?php
+// set namespace
 namespace Inpsyde\Antispam\Settings;
-
-/**
- * Convenience wrapper to access plugin options.
- * 
- * @param  string $name    option name
- * @param  mixed  $default fallback value if option does not exist
- * @return mixed
- */
-function get_option( $name, $default = NULL ) {
-	
-	$options = \get_option( 'inpsyde_antispam' );
-
-	return ( isset( $options[ $name ] ) ) ? $options[ $name ] : $default;
-}
 
 /**
  * Settings Page Class
  * 
- * @authors et, fb
+ * @author et, fb
  * @since   2.0.0  03/26/2012
  */
 class Inpsyde_Settings_Page {
 	
 	private $page_hook;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @author   et, fb
+	 * @since    2.0.0  03/26/2012
+	 * @return   void
+	 */
 	public function __construct() {
 		
 		add_action( 'admin_menu', array( $this, 'init_menu' ) );
 		add_action( 'admin_init', array( $this, 'init_settings' ) );
 	}
 	
+	/** 
+	 * Init menu item
+	 * 
+	 * @author   et, fb
+	 * @since    2.0.0  03/26/2012
+	 * @return   void
+	 */
 	public function init_menu() {
 		
 		$this->page_hook = add_submenu_page(
@@ -43,6 +44,13 @@ class Inpsyde_Settings_Page {
 		);
 	}
 	
+	/**
+	 * Register and add settings fields to form on settings page
+	 * 
+	 * @author   et, fb
+	 * @since    2.0.0  03/26/2012
+	 * @return   void
+	 */
 	public function init_settings() {
 		
 		add_settings_section(
@@ -60,7 +68,7 @@ class Inpsyde_Settings_Page {
 			),
 			/* $callback */ function () {
 				?>
-				<textarea name="inpsyde_antispam[words]" id="inpsas_words" rows="10" cols="50"><?php echo get_option( 'words', '' ); ?></textarea>
+				<textarea name="inpsyde_antispam[words]" id="inpsas_words" rows="10" cols="50"><?php echo \Inpsyde\Antispam\get_option( 'words', '' ); ?></textarea>
 				<?php
 			},
 			/* $page     */ $this->page_hook,  
@@ -75,7 +83,7 @@ class Inpsyde_Settings_Page {
 			),
 			/* $callback */ function () {
 				?>
-				<textarea name="inpsyde_antispam[advice]" id="inpsas_advice" class="large-text" rows="10" cols="50"><?php echo get_option( 'advice', '' ); ?></textarea>
+				<textarea name="inpsyde_antispam[advice]" id="inpsas_advice" class="large-text" rows="10" cols="50"><?php echo \Inpsyde\Antispam\get_option( 'advice', '' ); ?></textarea>
 				<?php
 			},
 			/* $page     */ $this->page_hook,  
@@ -90,7 +98,7 @@ class Inpsyde_Settings_Page {
 			),
 			/* $callback */ function () {
 				?>
-				<textarea name="inpsyde_antispam[rejected]" id="inpsas_rejected" class="large-text" rows="10" cols="50"><?php echo get_option( 'rejected', '' ); ?></textarea>
+				<textarea name="inpsyde_antispam[rejected]" id="inpsas_rejected" class="large-text" rows="10" cols="50"><?php echo \Inpsyde\Antispam\get_option( 'rejected', '' ); ?></textarea>
 				<?php
 			},
 			/* $page     */ $this->page_hook,  
@@ -103,7 +111,7 @@ class Inpsyde_Settings_Page {
 	/**
 	 * Get settings pages incl. markup
 	 * 
-	 * @authors et, fb
+	 * @author  et, fb
 	 * @since   2.0.0  03/26/2012
 	 * @return  void
 	 */
@@ -124,4 +132,4 @@ class Inpsyde_Settings_Page {
 		<?php
 	}
 	
-}
+} // end class
