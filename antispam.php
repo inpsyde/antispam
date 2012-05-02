@@ -8,7 +8,7 @@ if ( is_admin() ) {
 	new Settings\Inpsyde_Settings_Page;
 }
 
-// only on frontend
+// only on frontend, single pages
 // include the new fields in comment form on frontend
 if ( is_singular() ) {
 	add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
