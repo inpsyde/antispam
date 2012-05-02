@@ -61,6 +61,34 @@ class Inpsyde_Settings_Page {
 		);
 		
 		add_settings_field(
+			/* $id       */ 'inpsas_jslib',
+			/* $title    */ __( 'Do you will use the solution with jQuery lib or without an lib?', 'inps-antispam' ),
+			/* $callback */ function () {
+				?>
+				<fieldset>
+					<legend class="screen-reader-text"><span>Javascript Library</span></legend>
+					<label>
+						<input type="radio" name="inpsyde_antispam[jslib]" value="none" <?php
+						if ( \Inpsyde\Antispam\get_option( 'jslib', '' ) === 'none' ) { // checked() uses "==" rather than "==="
+							echo " checked='checked'";
+						} ?> /> 
+						<span><?php _e( 'none', 'inps-antispam' ); ?></span>
+					</label><br />
+					<label>
+						<input type="radio" name="inpsyde_antispam[jslib]" value="jquery" <?php
+						if ( \Inpsyde\Antispam\get_option( 'jslib', '' ) === 'jquery' ) { // checked() uses "==" rather than "==="
+							echo " checked='checked'";
+						} ?> /> 
+						<span><?php _e( 'jQuery', 'inps-antispam' ); ?></span>
+					</label>
+				</fieldset>
+				<?php
+			},
+			/* $page     */ $this->page_hook,  
+			/* $section  */ 'antispam_settings_section'
+		);
+		
+		add_settings_field(
 			/* $id       */ 'inpsas_words',
 			/* $title    */ sprintf(
 				'<label for="inpsas_words">%s</label>',
