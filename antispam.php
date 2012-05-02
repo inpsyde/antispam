@@ -112,7 +112,7 @@ function enqueue_scripts() {
 		$script = 'script';
 		$lib = '';
 	}
-	var_dump($lib.$script);
+	
 	wp_enqueue_script(
 		'inps-antispam-script',
 		plugins_url( '/js/' . $script . $suffix. '.js', __FILE__ ),
