@@ -2,9 +2,17 @@
 // set namespace
 namespace Inpsyde\Antispam;
 
+// include settings page
 if ( is_admin() ) {
 	require_once 'settings.php';
 	new Settings\Inpsyde_Settings_Page;
+}
+
+// only on frontend
+// include the new fields in comment form on frontend
+if ( ! is_admin() ) {
+	add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
+	add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
 }
 
 /**
@@ -15,27 +23,12 @@ if ( is_admin() ) {
  * @uses    delete_option
  * @return  void
  */
-register_uninstall_hook( $inps_antispam_file, '\Inpsyde\Antispam\delete_options' );
+register_uninstall_hook( __FILE__, '\Inpsyde\Antispam\delete_options' );
 function delete_options() {
 	
 	delete_option( 'inpsyde_antispam' );
 }
 
-/**
- * Check for db entry from older versions and delete
- * 
- * @author  fb
- * @since   2.0.0  04/30/2012
- * @uses    delete_option
- * @return  void
- */
-register_activation_hook( $inps_antispam_file, '\Inpsyde\Antispam\delete_old_stuff' );
-function delete_old_stuff() {
-	
-	// only for older versions of the plugin to remove the old db-entry
-	if ( \get_option( 'fbjsas_settings' ) )
-		delete_option( 'fbjsas_settings' );
-}
 
 /**
  * Init the plugin in WordPress
@@ -53,8 +46,6 @@ function init() {
 		wp_enqueue_script( 'jquery' );
 	
 }
-
-add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
 
 /**
  * Convenience wrapper to access plugin options.
@@ -148,9 +139,6 @@ function enhance_comment_form( $form ) {
 	</div>
 	<?php
 }
-
-// include the new fields in comment form on frontend
-add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
 
 /**
  * Hook: Process a posted comment.

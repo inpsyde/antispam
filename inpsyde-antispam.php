@@ -7,7 +7,7 @@
  * Author URI:  http://inpsyde.com
  * License:     GPLv3
  * License URI: license.txt
- * Version:     2.0.0
+ * Version:     2.0.1
  * Text Domain: inps-antispam
  * Domain Path: /languages
  */
@@ -20,7 +20,5 @@ if ( ! $correct_php_version ) {
 	echo 'You are running PHP ' . phpversion();
 	exit;
 }
-
-static $inps_antispam_file = __FILE__;
 
 require_once( 'antispam.php' );
