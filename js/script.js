@@ -1,0 +1,2 @@
+var answer=document.getElementById('expected_answer_0').value+
+document.getElementById('expected_answer_1').value;document.getElementById('inpsyde_antispam_answer').setAttribute('value',answer);document.getElementById('inpsyde_antispam').style.display='none';

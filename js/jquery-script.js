@@ -1,0 +1,1 @@
+(function(a){var b=a("#expected_answer_0").val()+a("#expected_answer_1").val();a("#inpsyde_antispam_answer").val(b);a(".hide-if-js-enabled").hide()})(jQuery);
