@@ -16,7 +16,7 @@
 $correct_php_version = version_compare( phpversion(), '5.3.0', '>=' );
 
 if ( ! $correct_php_version ) {
-	echo 'Inpsyde Inpsyde Multisite Feed Plugin requires <strong>PHP 5.3</strong> or higher.<br>';
+	echo 'Inpsyde Antispam Plugin requires <strong>PHP 5.3</strong> or higher.<br>';
 	echo 'You are running PHP ' . phpversion();
 	exit;
 }
