@@ -102,11 +102,6 @@ msgstr ""
 msgid "Javascript Library"
 msgstr "JavaScript Bibliothek"
 
-#: settings.php:75
-#@ inps-antispam
-msgid "none"
-msgstr "keine"
-
 #: settings.php:82
 #@ inps-antispam
 msgid "jQuery"
@@ -122,11 +117,6 @@ msgstr "Möchtest du die Lösung mit oder ohne eine JavaScript Bibliothek nutzen
 msgid "Javascript Loading"
 msgstr "JavaScript Integration"
 
-#: settings.php:108
-#@ inps-antispam
-msgid "only singular pages"
-msgstr "nur auf singulären Seiten"
-
 #: settings.php:115
 #@ inps-antispam
 msgid "all pages"
@@ -136,4 +126,14 @@ msgstr "alle Seiten"
 #@ inps-antispam
 msgid "Do you will load the script only on singular pages (post, page) or on all pages in frontend? The script is only necessary for the comment form."
 msgstr "Willst du das Script nur auf singulären Seiten (Artikel, Seiten) oder auf allen Seiten im Frontend laden? Das Script wird ausschließlich im Kommentar-Formular benötigt."
+
+#: settings.php:75
+#@ inps-antispam
+msgid "none (default)"
+msgstr "nichts (standard)"
+
+#: settings.php:108
+#@ inps-antispam
+msgid "only singular pages (default)"
+msgstr "nur auf singulären Seiten (standard)"
 

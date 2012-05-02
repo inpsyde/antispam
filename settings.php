@@ -72,7 +72,7 @@ class Inpsyde_Settings_Page {
 						if ( 'none' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) { // checked() uses "==" rather than "==="
 							echo " checked='checked'";
 						} ?> /> 
-						<span><?php _e( 'none', 'inps-antispam' ); ?></span>
+						<span><?php _e( 'none (default)', 'inps-antispam' ); ?></span>
 					</label><br />
 					<label>
 						<input type="radio" name="inpsyde_antispam[jslib]" value="jquery" <?php
@@ -105,7 +105,7 @@ class Inpsyde_Settings_Page {
 						if ( 'singular' === \Inpsyde\Antispam\get_option( 'jsload', '' ) ) { // checked() uses "==" rather than "==="
 							echo " checked='checked'";
 						} ?> /> 
-						<span><?php _e( 'only singular pages', 'inps-antispam' ); ?></span>
+						<span><?php _e( 'only singular pages (default)', 'inps-antispam' ); ?></span>
 					</label><br />
 					<label>
 						<input type="radio" name="inpsyde_antispam[jsload]" value="all" <?php
