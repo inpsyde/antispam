@@ -99,9 +99,12 @@ function get_random_word() {
 function enqueue_scripts() {
 	
 	// only on single post and pages
-	if ( ! is_singular() )
-		return;
+	if ( 'singular' === \Inpsyde\Antispam\get_option( 'jsload', '' ) ) {
+		if ( ! is_singular() )
+			return;
+	}
 	
+	// define suffixx for non minified source
 	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 	
 	// check for options to use with an js lib
