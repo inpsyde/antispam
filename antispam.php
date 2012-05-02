@@ -10,7 +10,7 @@ if ( is_admin() ) {
 
 // only on frontend
 // include the new fields in comment form on frontend
-if ( ! is_admin() ) {
+if ( is_singular() ) {
 	add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
 	add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
 }
