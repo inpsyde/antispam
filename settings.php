@@ -61,6 +61,72 @@ class Inpsyde_Settings_Page {
 		);
 		
 		add_settings_field(
+			/* $id       */ 'inpsas_jslib',
+			/* $title    */ __( 'Javascript Library', 'inps-antispam' ),
+			/* $callback */ function () {
+				?>
+				<fieldset>
+					<legend class="screen-reader-text"><span>__( 'Javascript Library', 'inps-antispam' )</span></legend>
+					<label>
+						<input type="radio" name="inpsyde_antispam[jslib]" value="none" <?php
+						if ( 'none' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) { // checked() uses "==" rather than "==="
+							echo " checked='checked'";
+						} ?> /> 
+						<span><?php _e( 'none (default)', 'inps-antispam' ); ?></span>
+					</label><br />
+					<label>
+						<input type="radio" name="inpsyde_antispam[jslib]" value="jquery" <?php
+						if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) { // checked() uses "==" rather than "==="
+							echo " checked='checked'";
+						} ?> /> 
+						<span><?php _e( 'jQuery', 'inps-antispam' ); ?></span>
+					</label>
+				</fieldset>
+				<span class="description">
+				<?php
+				_e( 'Do you will use the solution with jQuery lib or without an lib? Decide which library you want to use the frontend.', 'inps-antispam' );
+				?>
+				</span>
+				<?php
+			},
+			/* $page     */ $this->page_hook,  
+			/* $section  */ 'antispam_settings_section'
+		);
+		
+		add_settings_field(
+			/* $id       */ 'inpsas_jsload',
+			/* $title    */ __( 'Javascript Loading', 'inps-antispam' ),
+			/* $callback */ function () {
+				?>
+				<fieldset>
+					<legend class="screen-reader-text"><span>__( 'Javascript Loading', 'inps-antispam' )</span></legend>
+					<label>
+						<input type="radio" name="inpsyde_antispam[jsload]" value="singular" <?php
+						if ( 'singular' === \Inpsyde\Antispam\get_option( 'jsload', '' ) ) { // checked() uses "==" rather than "==="
+							echo " checked='checked'";
+						} ?> /> 
+						<span><?php _e( 'only singular pages (default)', 'inps-antispam' ); ?></span>
+					</label><br />
+					<label>
+						<input type="radio" name="inpsyde_antispam[jsload]" value="all" <?php
+						if ( 'all' === \Inpsyde\Antispam\get_option( 'jsload', '' ) ) { // checked() uses "==" rather than "==="
+							echo " checked='checked'";
+						} ?> /> 
+						<span><?php _e( 'all pages', 'inps-antispam' ); ?></span>
+					</label>
+				</fieldset>
+				<span class="description">
+				<?php
+				_e( 'Do you will load the script only on singular pages (post, page) or on all pages in frontend? The script is only necessary for the comment form.', 'inps-antispam' );
+				?>
+				</span>
+				<?php
+			},
+			/* $page     */ $this->page_hook,  
+			/* $section  */ 'antispam_settings_section'
+		);
+		
+		add_settings_field(
 			/* $id       */ 'inpsas_words',
 			/* $title    */ sprintf(
 				'<label for="inpsas_words">%s</label>',

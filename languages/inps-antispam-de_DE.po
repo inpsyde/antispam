@@ -19,27 +19,27 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: antispam.php:153
+#: antispam.php:183
 #@ inps-antispam
 msgid "Sorry, we think you are not a human :/"
 msgstr "Sorry, ich glaube du bist kein Mensch :/"
 
-#: settings.php:36
+#: settings.php:58
 #@ inps-antispam
 msgid "Antispam Settings"
 msgstr "Antispam Einstellungen"
 
-#: settings.php:45
+#: settings.php:133
 #@ inps-antispam
 msgid "Selection of words users without JavaScript have to type. Separate with line breaks."
 msgstr "Auswahl von Worten, die Nutzer ohne JavaScript eintippen müssen. Trenne mit Zeilenumbrüchen."
 
-#: settings.php:100
+#: settings.php:188
 #@ inps-antispam
 msgid "Antispam"
 msgstr "Antispam"
 
-#: settings.php:106
+#: settings.php:194
 #@ default
 msgid "Save Changes"
 msgstr ""
@@ -68,26 +68,72 @@ msgstr ""
 msgid "http://inpsyde.com"
 msgstr ""
 
-#: antispam.php:109
+#: antispam.php:148
 #, php-format
 #@ inps-antispam
 msgid "Please type the following phrase to confirm you are a human: %word%"
 msgstr "Bitte ergänze das folgende Wort und identifiziere dich damit als Mensch: %word%"
 
-#: settings.php:75
+#: settings.php:163
 #@ inps-antispam
 msgid "The warning you wish to give when the field is not or wrong filled out."
 msgstr "Die Warnung, die erscheint, wenn ein falsches oder kein Wert hinterlegt wird."
 
-#: settings.php:60
+#: settings.php:148
 #, php-format
 #@ inps-antispam
 msgid "Please note; assign the password hint %word% to see it displayed when prompted."
 msgstr "Hinterlege einen Text als Hinweis für den Nutzer, der ohne aktives JavaScript kommt.  Vergebe den Schlüssel %word% für das Antwort-Wort und es wird an dieser Stelle deiner Antwort erscheinen."
 
+#. translators: plugin header field 'PluginURI'
+#: inpsyde-antispam.php:0
+#@ inps-antispam
+msgid "http://wordpress.org/extend/plugins/js-antispam/"
+msgstr ""
+
 #. translators: plugin header field 'Version'
 #: inpsyde-antispam.php:0
 #@ inps-antispam
-msgid "2.0.0"
+msgid "2.1.0"
 msgstr ""
+
+#: settings.php:65
+#@ inps-antispam
+msgid "Javascript Library"
+msgstr "JavaScript Bibliothek"
+
+#: settings.php:82
+#@ inps-antispam
+msgid "jQuery"
+msgstr "jQuery"
+
+#: settings.php:87
+#@ inps-antispam
+msgid "Do you will use the solution with jQuery lib or without an lib? Decide which library you want to use the frontend."
+msgstr "Möchtest du die Lösung mit oder ohne eine JavaScript Bibliothek nutzen? Entscheide, ob du die Bibliothek im Frontend aktiv hast bzw. haben willst."
+
+#: settings.php:98
+#@ inps-antispam
+msgid "Javascript Loading"
+msgstr "JavaScript Integration"
+
+#: settings.php:115
+#@ inps-antispam
+msgid "all pages"
+msgstr "alle Seiten"
+
+#: settings.php:120
+#@ inps-antispam
+msgid "Do you will load the script only on singular pages (post, page) or on all pages in frontend? The script is only necessary for the comment form."
+msgstr "Willst du das Script nur auf singulären Seiten (Artikel, Seiten) oder auf allen Seiten im Frontend laden? Das Script wird ausschließlich im Kommentar-Formular benötigt."
+
+#: settings.php:75
+#@ inps-antispam
+msgid "none (default)"
+msgstr "nichts (standard)"
+
+#: settings.php:108
+#@ inps-antispam
+msgid "only singular pages (default)"
+msgstr "nur auf singulären Seiten (standard)"
 

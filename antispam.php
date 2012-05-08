@@ -8,9 +8,10 @@ if ( is_admin() ) {
 	new Settings\Inpsyde_Settings_Page;
 }
 
-// only on frontend
+// only on frontend, single pages
 // include the new fields in comment form on frontend
 if ( ! is_admin() ) {
+	add_action( 'wp_enqueue_scripts', '\Inpsyde\Antispam\enqueue_scripts' );
 	add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
 	add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
 }
@@ -41,10 +42,6 @@ add_action( 'init', '\Inpsyde\Antispam\init' );
 function init() {
 	
 	load_plugin_textdomain( 'inps-antispam', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-	if ( ! is_admin() )
-		wp_enqueue_script( 'jquery' );
-	
 }
 
 /**
@@ -93,6 +90,42 @@ function get_random_word() {
 }
 
 /**
+ * Enqueue the custom script create value and hide fields, if JS active
+ * 
+ * @author  fb
+ * @since   2.1.0  05/02/2012
+ * @return  void
+ */
+function enqueue_scripts() {
+	
+	// only on single post and pages
+	if ( 'singular' === \Inpsyde\Antispam\get_option( 'jsload', '' ) ) {
+		if ( ! is_singular() )
+			return;
+	}
+	
+	// define suffixx for non minified source
+	$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+	
+	// check for options to use with an js lib
+	if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) {
+		$script = 'jquery-script';
+		$lib = 'array( \'jquery\' ) ';
+	} else {
+		$script = 'script';
+		$lib = '';
+	}
+	
+	wp_enqueue_script(
+		'inps-antispam-script',
+		plugins_url( '/js/' . $script . $suffix. '.js', __FILE__ ),
+		$lib,
+		'',
+		TRUE
+	);
+}
+
+/**
  * Hook: Add spam detection fields to comment form.
  * 
  * @param  mixed $form The comment form
@@ -124,18 +157,11 @@ function enhance_comment_form( $form ) {
 	);
 
 	?>
-	<div class="hide-if-js-enabled">
+	<div id="inpsyde_antispam" class="hide-if-js-enabled">
 		<label for="inpsyde_antispam_answer"><?php echo $advice; ?></label>
 		<input type="text" name="inpsyde_antispam_answer" id="inpsyde_antispam_answer">
 		<input type="hidden" name="expected_answer[0]" id="expected_answer_0" value="<?php echo $parts[ 0 ]; ?>">
 		<input type="hidden" name="expected_answer[1]" id="expected_answer_1" value="<?php echo $parts[ 1 ]; ?>">
-		<script type="text/javascript">
-		jQuery( function($) {
-			var answer = $( "#expected_answer_0" ).val() + $( "#expected_answer_1" ).val();
-			$( "#inpsyde_antispam_answer" ).val(answer);
-			$( ".hide-if-js-enabled" ).hide();
-		} );
-		</script>
 	</div>
 	<?php
 }

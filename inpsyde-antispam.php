@@ -7,7 +7,7 @@
  * Author URI:  http://inpsyde.com
  * License:     GPLv3
  * License URI: license.txt
- * Version:     2.0.1
+ * Version:     2.1.0
  * Text Domain: inps-antispam
  * Domain Path: /languages
  */
@@ -16,7 +16,7 @@
 $correct_php_version = version_compare( phpversion(), '5.3.0', '>=' );
 
 if ( ! $correct_php_version ) {
-	echo 'Inpsyde Inpsyde Multisite Feed Plugin requires <strong>PHP 5.3</strong> or higher.<br>';
+	echo 'Inpsyde Antispam Plugin requires <strong>PHP 5.3</strong> or higher.<br>';
 	echo 'You are running PHP ' . phpversion();
 	exit;
 }
