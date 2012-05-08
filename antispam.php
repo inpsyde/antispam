@@ -150,7 +150,7 @@ function comment_post( $comment_id ) {
 	global $comment_content, $comment_type;
 
 	if ( ! is_current_comment_valid() ) {
-		delete_comment( $comment_id );
+		wp_delete_comment( $comment_id ); // incl. recount
 		$rejected_string = get_option( 'rejected', '' );
 
 		if ( empty( $rejected_string ) )
@@ -195,7 +195,7 @@ function delete_comment( $comment_id ) {
 		WHERE
 			comment_ID = {$comment_id}
 	" );
-
+	
 	recount_comments_for_post( (int) $_POST[ 'comment_post_ID' ] );
 }
 
