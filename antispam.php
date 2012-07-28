@@ -1,4 +1,12 @@
 <?php 
+/**
+ * Main file with important functions for frontend
+ * 
+ * @since   2.0.0
+ * @author  et, fb
+ * @version 07/28/2012
+ */
+
 // set namespace
 namespace Inpsyde\Antispam;
 
@@ -109,20 +117,24 @@ function enqueue_scripts() {
 	
 	// check for options to use with an js lib
 	if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) {
-		$script = 'jquery-script';
-		$lib = 'array( \'jquery\' ) ';
+		wp_register_script(
+			'inps-antispam-script',
+			plugins_url( '/js/jquery-script.js', __FILE__ ),
+			array( 'jquery' ),
+			'',
+			TRUE
+		);
 	} else {
-		$script = 'script';
-		$lib = '';
+		wp_register_script(
+			'inps-antispam-script',
+			plugins_url( '/js/script.js', __FILE__ ),
+			FALSE,
+			'',
+			TRUE
+		);
 	}
 	
-	wp_enqueue_script(
-		'inps-antispam-script',
-		plugins_url( '/js/' . $script . $suffix. '.js', __FILE__ ),
-		$lib,
-		'',
-		TRUE
-	);
+	wp_enqueue_script( 'inps-antispam-script' );
 }
 
 /**

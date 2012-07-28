@@ -7,7 +7,7 @@
  * Author URI:  http://inpsyde.com
  * License:     GPLv3
  * License URI: license.txt
- * Version:     2.1.0
+ * Version:     2.1.1
  * Text Domain: inps-antispam
  * Domain Path: /languages
  */
