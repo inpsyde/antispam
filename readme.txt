@@ -16,8 +16,8 @@ No remote service needed. Does not send or retrieve data from third party servic
 = Bugs, technical hints or contribute =
 Please give us feedback, contribute and file technical bugs on [GitHub Repo](https://github.com/inpsyde/inpsyde-antispam).
 
-= Made by [Inpsyde](http://inpsyde.com) &middot; we love WordPress =
-See also for premium plugin on our [market](http://marketpress.com).
+= Made by [Inpsyde](http://inpsyde.com) &middot; We love WordPress =
+See also for premium plugins in our [market](http://marketpress.com).
 
 == Installation ==
 = Requirements =
