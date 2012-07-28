@@ -6,8 +6,8 @@ Simple antispam solution. Scrambles a word and pieces it together automatically 
 
 No remote service needed. Does not send or retrieve data from third party services.
 
-### Made by [Inpsyde](http://inpsyde.com) &middot; we love WordPress
-See also for premium plugin on our [market](http://marketpress.com).
+### Made by [Inpsyde](http://inpsyde.com) &middot; We love WordPress
+See also for premium plugin in our [market](http://marketpress.com).
 
 ## Installation
 ### Requirements
