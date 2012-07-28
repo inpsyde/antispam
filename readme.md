@@ -23,6 +23,10 @@ Have a look at the premium plugins in our [market](http://marketpress.com).
 1. Go to *Settings* -> *Antispam* and configure the plugin
 1. Ready
 
+## Screenshots
+ 1. [Settings](https://github.com/inpsyde/WP-Multisite-Feed/raw/master/screenshot-1.png)
+
+
 ## Other Notes
 ### Bugs, technical hints or contribute
 Please give us feedback, contribute and file technical bugs on this [GitHub Repo](https://github.com/inpsyde/inpsyde-antispam), use Issues.
