@@ -3,7 +3,7 @@ Contributors: inpsyde, eteubert, Bueltge
 Donate link: 
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
-Tested up to: 3.4-Beta3
+Tested up to: 3.5-alpha
 Stable tag: 2.1.1
 
 Simple antispam solution with the magic of javascript
