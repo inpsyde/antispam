@@ -4,7 +4,7 @@
  * 
  * @since   2.0.0
  * @author  et, fb
- * @version 07/28/2012
+ * @version 07/29/2012
  */
 
 // set namespace
@@ -119,7 +119,7 @@ function enqueue_scripts() {
 	if ( 'jquery' === \Inpsyde\Antispam\get_option( 'jslib', '' ) ) {
 		wp_register_script(
 			'inps-antispam-script',
-			plugins_url( '/js/jquery-script.js', __FILE__ ),
+			plugins_url( '/js/jquery-script' . $suffix . '.js', __FILE__ ),
 			array( 'jquery' ),
 			'',
 			TRUE
@@ -127,7 +127,7 @@ function enqueue_scripts() {
 	} else {
 		wp_register_script(
 			'inps-antispam-script',
-			plugins_url( '/js/script.js', __FILE__ ),
+			plugins_url( '/js/script' . $suffix . '.js', __FILE__ ),
 			FALSE,
 			'',
 			TRUE

@@ -5,8 +5,13 @@
  * @since    2.1.0  05/02/2012
  */
 
-var answer = document.getElementById( 'expected_answer_0' ).value + 
-	document.getElementById( 'expected_answer_1' ).value;
+if ( document.getElementById( 'expected_answer_0' ) ) {
 
-document.getElementById( 'inpsyde_antispam_answer' ).setAttribute( 'value', answer );
-document.getElementById( 'inpsyde_antispam' ).style.display = 'none';
+	var answer = document.getElementById( 'expected_answer_0' ).value + 
+		document.getElementById( 'expected_answer_1' ).value;
+	// helps on dev mode
+	console.log(answer);
+	
+	document.getElementById( 'inpsyde_antispam_answer' ).setAttribute( 'value', answer );
+	document.getElementById( 'inpsyde_antispam' ).style.display = 'none';
+}
