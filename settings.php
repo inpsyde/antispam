@@ -56,14 +56,14 @@ class Inpsyde_Settings_Page {
 		add_settings_section(
 			/* $id 		 */ 'antispam_settings_section',
 			/* $title 	 */ __( 'Antispam Settings', 'inps-antispam' ),	
-			/* $callback */ function () { /* section head html */ }, 		
+			/* $callback */ function() { /* section head html */ }, 		
 			/* $page	 */ $this->page_hook	
 		);
 		
 		add_settings_field(
 			/* $id       */ 'inpsas_jslib',
 			/* $title    */ __( 'Javascript Library', 'inps-antispam' ),
-			/* $callback */ function () {
+			/* $callback */ function() {
 				?>
 				<fieldset>
 					<legend class="screen-reader-text"><span>__( 'Javascript Library', 'inps-antispam' )</span></legend>
@@ -96,7 +96,7 @@ class Inpsyde_Settings_Page {
 		add_settings_field(
 			/* $id       */ 'inpsas_jsload',
 			/* $title    */ __( 'Javascript Loading', 'inps-antispam' ),
-			/* $callback */ function () {
+			/* $callback */ function() {
 				?>
 				<fieldset>
 					<legend class="screen-reader-text"><span>__( 'Javascript Loading', 'inps-antispam' )</span></legend>
@@ -132,7 +132,7 @@ class Inpsyde_Settings_Page {
 				'<label for="inpsas_words">%s</label>',
 				__( 'Selection of words users without JavaScript have to type. Separate with line breaks.', 'inps-antispam' )
 			),
-			/* $callback */ function () {
+			/* $callback */ function() {
 				?>
 				<textarea name="inpsyde_antispam[words]" id="inpsas_words" rows="10" cols="50"><?php echo \Inpsyde\Antispam\get_option( 'words', '' ); ?></textarea>
 				<?php
@@ -147,7 +147,7 @@ class Inpsyde_Settings_Page {
 				'<label for="inpsas_advice">%s</label>',
 				__( 'Please note; assign the password hint %word% to see it displayed when prompted.', 'inps-antispam' )
 			),
-			/* $callback */ function () {
+			/* $callback */ function() {
 				?>
 				<textarea name="inpsyde_antispam[advice]" id="inpsas_advice" class="large-text" rows="10" cols="50"><?php echo \Inpsyde\Antispam\get_option( 'advice', '' ); ?></textarea>
 				<?php
@@ -162,9 +162,24 @@ class Inpsyde_Settings_Page {
 				'<label for="inpsas_rejected">%s</label>',
 				__( 'The warning you wish to give when the field is not or wrong filled out.', 'inps-antispam' )
 			),
-			/* $callback */ function () {
+			/* $callback */ function() {
 				?>
 				<textarea name="inpsyde_antispam[rejected]" id="inpsas_rejected" class="large-text" rows="10" cols="50"><?php echo \Inpsyde\Antispam\get_option( 'rejected', '' ); ?></textarea>
+				<?php
+			},
+			/* $page     */ $this->page_hook,  
+			/* $section  */ 'antispam_settings_section'
+		);
+		
+		add_settings_field(
+			/* $id       */ 'inpsas_url_length',
+			/* $title    */ sprintf(
+				'<label for="inpsas_url_length">%s</label>',
+				__( 'This function will mark as spam any comment with an url longer than x characters.', 'inps-antispam' )
+			),
+			/* $callback */ function() {
+				?>
+				<input name="inpsyde_antispam[url_length]" id="inpsas_url_length" value="<?php echo \Inpsyde\Antispam\get_option( 'url_length', '' ); ?>" />
 				<?php
 			},
 			/* $page     */ $this->page_hook,  

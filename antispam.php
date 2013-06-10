@@ -22,6 +22,7 @@ if ( ! is_admin() ) {
 	add_action( 'wp_enqueue_scripts', '\Inpsyde\Antispam\enqueue_scripts' );
 	add_action( 'comment_form', '\Inpsyde\Antispam\enhance_comment_form' );
 	add_action( 'comment_post', '\Inpsyde\Antispam\comment_post' );
+	add_filter( 'pre_comment_approved', '\Inpsyde\Antispam\url_spamcheck', 99, 2 );
 }
 
 /**
@@ -62,7 +63,7 @@ function init() {
 function get_option( $name, $default = NULL ) {
 	
 	$options = \get_option( 'inpsyde_antispam' );
-
+	
 	return ( isset( $options[ $name ] ) ) ? $options[ $name ] : $default;
 }
 
@@ -197,6 +198,28 @@ function comment_post( $comment_id ) {
 		wp_die( $rejected_string );
 	}
 }
+
+
+/**
+ * This function will mark as spam any comment with an url longer than 50 characters.
+ * 
+ * @param   mixed Signifies the approval status (0|1|'spam')
+ * @param   array $commentdata Contains information on the comment
+ * @return  mixed Signifies the approval status (0|1|'spam')
+ */
+function url_spamcheck( $approved , $commentdata ) {
+	// get length from settings
+	$url_length = (int) get_option( 'url_length', '' );
+	
+	if ( empty( $url_length ) )
+		$url_length = 50;
+	
+	// set status in dependence of length
+	$approved = ( strlen( $commentdata['comment_author_url'] ) > $url_length ) ? 'spam' : $approved;
+	
+	return $approved;
+}
+
 
 /**
  * Check if the submitted comment is valid.
