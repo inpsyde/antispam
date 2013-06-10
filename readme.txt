@@ -3,8 +3,8 @@ Contributors: inpsyde, eteubert, Bueltge
 Donate link: 
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
-Tested up to: 3.5-alpha
-Stable tag: 2.1.1
+Tested up to: 3.6-Beta3
+Stable tag: 2.1.2
 
 Simple antispam solution with the magic of javascript
 
@@ -35,6 +35,9 @@ Have a look at the premium plugins in our [market](http://marketpress.com).
 1. Ready
 
 == Changelog ==
+= 2.1.2 (06/10/2013) =
+* Add check for the length of URL field in comment form
+
 = 2.1.1 =
 * Change to core function to delete comment, incl. recount
 
