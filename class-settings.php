@@ -13,6 +13,15 @@ class Inpsyde_Settings_Page {
 	private $page_hook;
 	
 	/**
+	 * Callback for add_action(). Creates a new instance.
+	 *
+	 */
+	public function init() {
+		
+		return new self;
+	}
+	
+	/**
 	 * Constructor
 	 * 
 	 * @author   et, fb
@@ -21,8 +30,26 @@ class Inpsyde_Settings_Page {
 	 */
 	public function __construct() {
 		
-		add_action( 'admin_menu', array( $this, 'init_menu' ) );
-		add_action( 'admin_init', array( $this, 'init_settings' ) );
+		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
+		add_action( 'admin_menu',          array( $this, 'init_menu' ) );
+		add_action( 'admin_init',          array( $this, 'init_settings' ) );
+	}
+	
+	/**
+	 * Add Settings link to plugin listing
+	 * 
+	 * @author fb
+	 * @since  06/14/2013
+	 * @param  $links String
+	 * @param  $file  String
+	 * @param  $links String
+	 */
+	public function plugin_action_links( $links, $file ) {
+		
+		if ( 'inpsyde-antispam/inpsyde-antispam.php' === $file )
+			$links[] = '<a href="options-general.php?page=inpsyde-antispam-page">' . __( 'Settings' ) . '</a>';
+		
+		return $links;
 	}
 	
 	/** 

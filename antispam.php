@@ -13,7 +13,13 @@ namespace Inpsyde\Antispam;
 // include settings page
 if ( is_admin() ) {
 	require_once 'class-settings.php';
-	new Settings\Inpsyde_Settings_Page;
+	//new Settings\Inpsyde_Settings_Page;
+//}
+
+	\add_action(
+		'plugins_loaded',
+		array( 'Inpsyde\Antispam\Settings\Inpsyde_Settings_Page', 'init' )
+	);
 }
 
 // only on frontend, single pages
