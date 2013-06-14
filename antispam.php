@@ -12,7 +12,7 @@ namespace Inpsyde\Antispam;
 
 // include settings page
 if ( is_admin() ) {
-	require_once 'settings.php';
+	require_once 'class-settings.php';
 	new Settings\Inpsyde_Settings_Page;
 }
 

@@ -4,7 +4,7 @@ Donate link:
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
 Tested up to: 3.6-Beta3
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 
 Simple antispam solution with the magic of javascript
 
@@ -35,6 +35,9 @@ Have a look at the premium plugins in our [market](http://marketpress.com).
 1. Ready
 
 == Changelog ==
+= 2.1.3 (06/14/2013) =
+* Change file name for settings to remove error on network admin
+
 = 2.1.2 (06/10/2013) =
 * Add check for the length of URL field in comment form
 
