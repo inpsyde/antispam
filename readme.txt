@@ -3,7 +3,7 @@ Contributors: inpsyde, eteubert, Bueltge
 Donate link: 
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
-Tested up to: 3.6-Beta3
+Tested up to: 3.9
 Stable tag: 2.1.3
 
 Simple antispam solution with the magic of javascript
@@ -22,7 +22,7 @@ Have a look at the premium plugins in our [market](http://marketpress.com).
 
 == Installation ==
 = Requirements =
-* WordPress (current not Multisite) version 3.3 and later (tested at 3.4)
+* WordPress (current not Multisite) version 3.3 and later (see tested up to)
 * PHP 5.3 (use namespaces)
 
 = Installation =
