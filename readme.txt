@@ -1,9 +1,8 @@
 === Inpsyde AntiSpam ===
 Contributors: inpsyde, eteubert, Bueltge
-Donate link: 
 Tags: spam, protection, javascript, anti-spam
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.3
 Stable tag: 2.1.3
 
 Simple antispam solution with the magic of javascript
